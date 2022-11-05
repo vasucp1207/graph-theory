@@ -16,7 +16,7 @@ public:
 		l = new list<int>[V];
 	}
 	
-	void addEdge(int i, int j, bool undir = true) {
+	void addEdge(int i, int j, bool undir = false) {
 		l[i].push_back(j);
 		if(undir) {
 			l[j].push_back(i);
@@ -32,6 +32,7 @@ public:
 			}
 		}
 
+		// push the node when we going back from this
 		ordering.push_front(node);
 		return ;
 	}
@@ -54,14 +55,12 @@ public:
 
 int main() {
 	
-	Graph g(7);
+	Graph g(5);
 	
 	g.addEdge(0, 1);
 	g.addEdge(1, 2);
-	g.addEdge(2, 3);
-	g.addEdge(3, 5);
-	g.addEdge(5, 6);
-	g.addEdge(4, 5);
+	g.addEdge(1, 3);
+	g.addEdge(0, 3);
 	g.addEdge(0, 4);
 	g.addEdge(3, 4);
 
